@@ -1,0 +1,58 @@
+.facts {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  max-width: 520px;
+}
+
+.facts div {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid #2a0a14;
+  padding-bottom: 0.4rem;
+}
+
+.facts dt {
+  font: 13px 'Share Tech Mono', monospace;
+  color: var(--cyan);
+  min-width: 7rem;
+}
+
+.daemons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.daemons span {
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--yellow);
+  color: var(--yellow);
+  font: 14px 'Share Tech Mono', monospace;
+  transition: background 0.2s, color 0.2s;
+}
+
+.daemons span:hover {
+  background: var(--yellow);
+  color: #111;
+}
+
+.skills {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  max-width: 560px;
+}
+
+.skills li {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.skills em {
+  color: var(--dim);
+  font: 13px 'Share Tech Mono', monospace;
+  font-style: normal;
+  margin-left: 0.5rem;
+}

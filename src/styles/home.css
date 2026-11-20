@@ -1,0 +1,115 @@
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
+  padding: 4vh 0;
+}
+
+.glitch {
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  line-height: 1.05;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  position: relative;
+  margin-bottom: 0.6rem;
+  text-shadow: 0 0 24px rgba(255, 0, 60, 0.35);
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.glitch::before {
+  color: var(--red);
+  transform: translate(3px, 0);
+  clip-path: inset(0 0 60% 0);
+  animation: glitch 4s infinite steps(1);
+}
+
+.glitch::after {
+  color: var(--cyan);
+  transform: translate(-3px, 0);
+  clip-path: inset(55% 0 0 0);
+  animation: glitch 4s infinite steps(1) reverse;
+}
+
+@keyframes glitch {
+  0%,
+  88%,
+  100% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0.9;
+    clip-path: inset(10% 0 70% 0);
+  }
+  94% {
+    opacity: 0.9;
+    clip-path: inset(60% 0 10% 0);
+  }
+  97% {
+    opacity: 0.9;
+    clip-path: inset(30% 0 40% 0);
+  }
+}
+
+.author {
+  font: 18px 'Share Tech Mono', monospace;
+  color: var(--yellow);
+  margin-bottom: 1.2rem;
+}
+
+.breach {
+  border: 1px solid #3a0b19;
+  background: var(--panel);
+  padding: 1rem;
+  font-family: 'Share Tech Mono', monospace;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+}
+
+.breach-head {
+  color: var(--yellow);
+  font-size: 13px;
+  margin-bottom: 0.7rem;
+  border-bottom: 1px solid #3a0b19;
+  padding-bottom: 0.4rem;
+}
+
+.grid5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+}
+
+.grid5 span {
+  padding: 0.45rem 0.55rem;
+  text-align: center;
+  font-size: 15px;
+  color: var(--cyan);
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.grid5 span.hit {
+  background: var(--yellow);
+  color: #111;
+  border-color: var(--yellow);
+}
+
+.buffer {
+  margin-top: 0.8rem;
+  font-size: 13px;
+  color: var(--dim);
+}
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,28 @@
+.boot {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  padding: 2rem;
+  cursor: pointer;
+}
+
+.boot pre {
+  font: 16px/1.8 'Share Tech Mono', monospace;
+  color: var(--cyan);
+}
+
+.boot small {
+  color: var(--dim);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.cursor {
+  color: var(--red);
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

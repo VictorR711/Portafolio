@@ -1,0 +1,326 @@
+.breach-game {
+  min-height: 100vh;
+  padding: 1rem clamp(1rem, 5vw, 4rem) 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.breach-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.breach-top h1 {
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.breach-top p {
+  color: var(--dim);
+  font: 14px 'Share Tech Mono', monospace;
+}
+
+.breach-buttons {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.help-button {
+  padding: 0.5rem 1.1rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border: 2px solid var(--cyan);
+  color: var(--cyan);
+  transition: background 0.2s, color 0.2s;
+}
+
+.help-button:hover {
+  background: var(--cyan);
+  color: #111;
+}
+
+.skip-button {
+  padding: 0.5rem 1.3rem;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  background: var(--yellow);
+  color: #111;
+  border: 2px solid var(--yellow);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% 100%,
+    12px 100%,
+    0 calc(100% - 12px)
+  );
+  transition: background 0.2s, color 0.2s;
+}
+
+.skip-button:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
+.breach-body {
+  display: grid;
+  grid-template-columns: 1fr minmax(240px, 320px);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.breach-side {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.breach-panel {
+  background: var(--panel);
+  border: 1px solid #3a0b19;
+  padding: 1rem;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.breach-panel h2 {
+  font-size: 0.95rem;
+  margin: 0 0 0.8rem;
+  border-left-width: 3px;
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 400;
+}
+
+.matrix {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.cell {
+  padding: 0.9rem 0;
+  font: 22px 'Share Tech Mono', monospace;
+  color: var(--dim);
+  border: 1px solid #2a0a14;
+  background: #0c0509;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.cell.available {
+  color: var(--cyan);
+  border-color: var(--cyan);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.cell.available:hover {
+  background: var(--yellow);
+  color: #111;
+  border-color: var(--yellow);
+}
+
+.cell.picked {
+  background: #2a0a14;
+  color: var(--red);
+  border-color: var(--red);
+  text-decoration: line-through;
+}
+
+.cell:disabled {
+  cursor: default;
+}
+
+@keyframes pulse {
+  50% {
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.45);
+  }
+}
+
+.timer {
+  height: 10px;
+  border: 1px solid var(--red);
+}
+
+.timer b {
+  display: block;
+  height: 100%;
+  background: var(--red);
+  transition: width 1s linear;
+}
+
+.timer-text {
+  display: block;
+  margin-top: 0.4rem;
+  text-align: right;
+  color: var(--yellow);
+}
+
+.buffer-slots,
+.sequence {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.buffer-slots span,
+.sequence span {
+  min-width: 2.6rem;
+  height: 2.6rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid #3a0b19;
+  color: var(--dim);
+}
+
+.buffer-slots span.filled {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.sequence span {
+  color: var(--yellow);
+  border-color: #6b5f00;
+}
+
+.sequence span.done {
+  background: var(--yellow);
+  color: #111;
+  border-color: var(--yellow);
+}
+
+.skip-hint {
+  margin-top: 2rem;
+  color: var(--dim);
+  font: 14px 'Share Tech Mono', monospace;
+}
+
+.breach-result {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  background: rgba(7, 6, 10, 0.88);
+}
+
+.breach-result-box {
+  text-align: center;
+  padding: 2rem;
+}
+
+.breach-result-box h2 {
+  border: 0;
+  padding: 0;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  text-transform: uppercase;
+}
+
+.breach-result-box .success {
+  color: var(--cyan);
+}
+
+.breach-result-box .failure {
+  color: var(--red);
+}
+
+.breach-result-box .actions {
+  justify-content: center;
+}
+
+@media (max-width: 800px) {
+  .breach-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tutorial {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  overflow-y: auto;
+  background: rgba(7, 6, 10, 0.94);
+}
+
+.tutorial-box {
+  width: min(620px, 100%);
+  background: var(--panel);
+  border: 1px solid var(--red);
+  padding: 1.6rem;
+}
+
+.tutorial-box h2 {
+  margin-top: 0;
+}
+
+.tutorial-steps {
+  display: grid;
+  gap: 0.7rem;
+  padding-left: 1.4rem;
+  color: #cfc9c0;
+}
+
+.tutorial-steps li::marker {
+  color: var(--yellow);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.tutorial-legend {
+  list-style: none;
+  padding: 0;
+  margin: 1.4rem 0 1rem;
+  display: flex;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+  font: 14px 'Share Tech Mono', monospace;
+  color: var(--dim);
+}
+
+.tutorial-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-cell {
+  min-width: 2.4rem;
+  padding: 0.3rem 0;
+  text-align: center;
+  border: 1px solid;
+}
+
+.legend-cell.available {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.legend-cell.picked {
+  color: var(--red);
+  border-color: var(--red);
+  text-decoration: line-through;
+}
+
+.legend-cell.sequence {
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
+
+.tutorial-data {
+  font: 14px 'Share Tech Mono', monospace;
+  color: var(--cyan);
+}
+
+.tutorial-tip {
+  margin-top: 0.6rem;
+  color: var(--dim);
+  font-size: 1rem;
+}

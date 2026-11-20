@@ -1,0 +1,17 @@
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './styles/base.css'
+import './styles/buttons.css'
+import './styles/bars.css'
+import './styles/layout.css'
+import './styles/loader.css'
+import './styles/boot.css'
+import './styles/breach.css'
+import './styles/home.css'
+import './styles/projects.css'
+import './styles/profile.css'
+import './styles/contact.css'
+import './styles/motion.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />)

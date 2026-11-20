@@ -1,0 +1,19 @@
+.bar {
+  height: 8px;
+  background: #1d0d15;
+}
+
+.bar b {
+  display: block;
+  height: 100%;
+  width: var(--w);
+  background: linear-gradient(90deg, var(--red), var(--yellow));
+  transform-origin: left;
+  animation: fill 0.9s ease-out both;
+}
+
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+}

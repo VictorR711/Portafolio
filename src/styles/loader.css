@@ -1,0 +1,31 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  background: rgba(7, 6, 10, 0.94);
+}
+
+.loader-box {
+  width: min(420px, 85vw);
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--cyan);
+  display: grid;
+  gap: 0.7rem;
+}
+
+.loader-box span {
+  color: var(--yellow);
+  text-align: right;
+}
+
+.bar.big {
+  height: 12px;
+  border: 1px solid var(--red);
+  background: transparent;
+}
+
+.bar.big b {
+  transition: width 0.07s linear;
+}
