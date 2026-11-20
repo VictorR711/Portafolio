@@ -7,6 +7,7 @@ import {
   getAvailableCells,
   getProgress,
 } from '../utils/breach'
+import { playSound } from '../utils/sound'
 
 function BreachGame({ onComplete, onSkip }) {
   const [puzzle, setPuzzle] = useState(createPuzzle)
@@ -38,6 +39,16 @@ function BreachGame({ onComplete, onSkip }) {
       setStatus('lost')
     }
   }, [status, timeLeft])
+
+  useEffect(() => {
+    if (status === 'won') {
+      playSound('success')
+    }
+
+    if (status === 'lost') {
+      playSound('fail')
+    }
+  }, [status])
 
   useEffect(() => {
     if (status !== 'won') {

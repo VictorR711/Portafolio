@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { BOOT_LINES } from '../data/texts'
+import { playSound } from '../utils/sound'
 
 function Boot({ onDone }) {
   const [visible, setVisible] = useState(0)
@@ -13,6 +14,12 @@ function Boot({ onDone }) {
     const next = setTimeout(() => setVisible(visible + 1), 420)
     return () => clearTimeout(next)
   }, [visible, onDone])
+
+  useEffect(() => {
+    if (visible > 0) {
+      playSound('type')
+    }
+  }, [visible])
 
   return (
     <div className="boot" onClick={onDone}>

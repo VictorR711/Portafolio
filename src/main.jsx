@@ -12,6 +12,7 @@ import './styles/home.css'
 import './styles/projects.css'
 import './styles/profile.css'
 import './styles/contact.css'
+import './styles/sound.css'
 import './styles/motion.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />)

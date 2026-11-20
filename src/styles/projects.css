@@ -1,10 +1,10 @@
 .grid {
   display: grid;
-  gap: 1.2rem;
+  gap: 1.8rem;
 }
 
 .grid.two {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
 }
 
 .card {
@@ -80,24 +80,24 @@
 }
 
 .body {
-  padding: 1.1rem 1.2rem 1.3rem;
+  padding: 1.5rem 1.7rem 1.7rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.7rem;
   flex: 1;
 }
 
 .body h3 {
-  font-size: 1.4rem;
+  font-size: 1.9rem;
 }
 
 .body p {
   color: #bdb6ad;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .node {
-  font: 12px 'Share Tech Mono', monospace;
+  font: 14px 'Share Tech Mono', monospace;
   color: var(--red);
 }
 
@@ -108,7 +108,7 @@
 }
 
 .tags i {
-  font: 12px 'Share Tech Mono', monospace;
+  font: 14px 'Share Tech Mono', monospace;
   color: var(--cyan);
   border: 1px solid #0a4a50;
   padding: 0.1rem 0.5rem;
@@ -122,8 +122,8 @@
 }
 
 .sub {
-  margin: 2.5rem 0 0.8rem;
-  font: 15px 'Share Tech Mono', monospace;
+  margin: 3rem 0 1rem;
+  font: 18px 'Share Tech Mono', monospace;
   color: var(--dim);
   font-weight: 400;
 }
@@ -135,10 +135,10 @@
 
 .row {
   display: grid;
-  grid-template-columns: 11rem 1fr auto auto;
-  gap: 1rem;
+  grid-template-columns: 13rem 1fr auto auto;
+  gap: 1.2rem;
   align-items: center;
-  padding: 0.8rem 0.4rem;
+  padding: 1.1rem 0.6rem;
   border-bottom: 1px solid #2a0a14;
   text-decoration: none;
   color: var(--dim);
@@ -147,11 +147,11 @@
 
 .row strong {
   color: var(--text);
-  font-size: 1.15rem;
+  font-size: 1.35rem;
 }
 
 .row-tags {
-  font: 12px 'Share Tech Mono', monospace;
+  font: 14px 'Share Tech Mono', monospace;
   color: var(--cyan);
   opacity: 0.7;
 }

@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react'
 import BreachGame from './components/BreachGame'
 import Boot from './components/Boot'
 import Portfolio from './components/Portfolio'
+import SoundControl from './components/SoundControl'
 
 function App() {
   const [stage, setStage] = useState('game')
@@ -9,15 +10,22 @@ function App() {
   const goToBoot = useCallback(() => setStage('boot'), [])
   const goToSite = useCallback(() => setStage('site'), [])
 
+  let screen = <Portfolio />
+
   if (stage === 'game') {
-    return <BreachGame onComplete={goToBoot} onSkip={goToBoot} />
+    screen = <BreachGame onComplete={goToBoot} onSkip={goToBoot} />
   }
 
   if (stage === 'boot') {
-    return <Boot onDone={goToSite} />
+    screen = <Boot onDone={goToSite} />
   }
 
-  return <Portfolio />
+  return (
+    <>
+      {screen}
+      <SoundControl />
+    </>
+  )
 }
 
 export default App

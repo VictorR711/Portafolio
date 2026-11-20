@@ -1,4 +1,11 @@
+import { useEffect } from 'react'
+import { playSound } from '../utils/sound'
+
 function Loader({ label, progress }) {
+  useEffect(() => {
+    playSound('transition')
+  }, [])
+
   return (
     <div className="loader" role="status" aria-live="polite">
       <div className="loader-box">
