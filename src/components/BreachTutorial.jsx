@@ -23,7 +23,7 @@ function BreachTutorial({ onStart, onSkip }) {
             Casilla ya usada
           </li>
           <li>
-            <span className="legend-cell sequence">55</span>
+            <span className="legend-cell legend-sequence">55</span>
             Código de la secuencia
           </li>
         </ul>
