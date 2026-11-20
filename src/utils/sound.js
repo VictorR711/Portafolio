@@ -3,9 +3,19 @@ const MASTER_VOLUME = 0.6
 const AMBIENT_VOLUME = 0.035
 const AMBIENT_FADE_IN = 4
 
+const SAMPLE_FILES = {
+  hover: 'ui-hover.mp3',
+  click: 'ui-click.mp3',
+  transition: 'transition.mp3',
+  success: 'breach-success.mp3',
+  fail: 'breach-fail.mp3',
+}
+
 let context = null
 let master = null
 let ambientStarted = false
+const samples = {}
+const playing = {}
 let muted = readStoredMute()
 
 function readStoredMute() {
@@ -69,6 +79,33 @@ function noise({ duration, volume, frequency, delay = 0 }) {
   filter.connect(gain)
   gain.connect(master)
   source.start(start)
+}
+
+function loadSamples() {
+  const base = import.meta.env.BASE_URL
+
+  Object.entries(SAMPLE_FILES).forEach(([name, file]) => {
+    fetch(`${base}sounds/${file}`)
+      .then(response => response.arrayBuffer())
+      .then(data => context.decodeAudioData(data))
+      .then(buffer => {
+        samples[name] = buffer
+      })
+      .catch(() => {})
+  })
+}
+
+function playSample(name) {
+  const source = context.createBufferSource()
+
+  if (playing[name]) {
+    playing[name].stop()
+  }
+
+  source.buffer = samples[name]
+  source.connect(master)
+  source.start()
+  playing[name] = source
 }
 
 const SOUNDS = {
@@ -166,6 +203,7 @@ export function unlockAudio() {
     master = context.createGain()
     master.gain.value = muted ? 0 : MASTER_VOLUME
     master.connect(context.destination)
+    loadSamples()
   }
 
   if (context.state === 'suspended') {
@@ -177,6 +215,11 @@ export function unlockAudio() {
 
 export function playSound(name) {
   if (!context || muted || context.state !== 'running') {
+    return
+  }
+
+  if (samples[name]) {
+    playSample(name)
     return
   }
 
